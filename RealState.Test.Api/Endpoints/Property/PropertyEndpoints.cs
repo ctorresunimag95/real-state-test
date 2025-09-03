@@ -33,7 +33,8 @@ internal static class PropertyEndpoints
 
         group.MapPut("/{idProperty:guid}", UpdatePropertyInfo);
 
-        group.MapPost("/{idProperty:guid}/add-image", AddImage);
+        group.MapPost("/{idProperty:guid}/add-image", AddImage)
+            .DisableAntiforgery();
     }
 
     public static async Task<Results<Created<CreatePropertyResponse>, ProblemHttpResult>> CreateProperty(
@@ -82,7 +83,7 @@ internal static class PropertyEndpoints
 
     public static async Task<Results<Ok<AddPropertyImageResponse>, ProblemHttpResult>> AddImage(
         [FromRoute] Guid idProperty,
-        [FromForm] IFormFile file,
+        [FromForm(Name = "file")] IFormFile file,
         [FromServices] IAddImageHandler handler,
         CancellationToken cancellationToken = default)
     {

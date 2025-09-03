@@ -39,10 +39,12 @@ public class PropertyConfiguration : IEntityTypeConfiguration<Property>
         
         builder.HasMany(x => x.PropertyImages)
             .WithOne()
-            .HasForeignKey(x => x.IdProperty);
+            .HasForeignKey("IdProperty")
+            .Metadata.DependentToPrincipal?.SetPropertyAccessMode(PropertyAccessMode.Field);
         
         builder.HasMany(x => x.PropertyTraces)
             .WithOne()
-            .HasForeignKey(x => x.IdProperty);
+            .HasForeignKey("IdProperty")
+            .Metadata.DependentToPrincipal?.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

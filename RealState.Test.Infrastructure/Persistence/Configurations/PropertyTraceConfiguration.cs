@@ -29,8 +29,5 @@ public class PropertyTraceConfiguration : IEntityTypeConfiguration<PropertyTrace
         builder.Property(x => x.Tax)
             .HasPrecision(18, 2)
             .IsRequired();
-        
-        builder.Property(x => x.IdProperty)
-            .IsRequired();
     }
 }

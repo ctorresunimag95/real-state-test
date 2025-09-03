@@ -56,7 +56,7 @@ namespace RealState.Test.Infrastructure.Persistence.Migrations
                     IdPropertyImage = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     File = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false),
-                    IdProperty = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    IdProperty = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,8 +65,7 @@ namespace RealState.Test.Infrastructure.Persistence.Migrations
                         name: "FK_PropertyImage_Property_IdProperty",
                         column: x => x.IdProperty,
                         principalTable: "Property",
-                        principalColumn: "IdProperty",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdProperty");
                 });
 
             migrationBuilder.CreateTable(

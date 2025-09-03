@@ -26,6 +26,6 @@ public class ChangePropertyPriceHandler : IChangePropertyPriceHandler
         }
         
         property.ChangePrice(command.Price);
-        await _propertyRepository.UpdateAsync(property, cancellationToken);
+        await _propertyRepository.SaveAsync(cancellationToken);
     }
 }

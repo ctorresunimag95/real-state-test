@@ -26,6 +26,8 @@ public class CreatePropertyHandler : ICreatePropertyHandler
             , command.IdOwner);
 
         await _propertyRepository.AddAsync(property, cancellationToken);
+        
+        await _propertyRepository.SaveAsync(cancellationToken);
 
         return property.IdProperty;
     }

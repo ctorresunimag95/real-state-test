@@ -21,8 +21,5 @@ public class PropertyImageConfiguration : IEntityTypeConfiguration<PropertyImage
         
         builder.Property(x => x.Enabled)
             .IsRequired();
-
-        builder.Property(x => x.IdProperty)
-            .IsRequired();
     }
 }

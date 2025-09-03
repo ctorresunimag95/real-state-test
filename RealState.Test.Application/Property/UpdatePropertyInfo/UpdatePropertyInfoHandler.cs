@@ -27,6 +27,6 @@ public class UpdatePropertyInfoHandler : IUpdatePropertyInfoHandler
         
         property.UpdateInfo(command.Name, command.Address, command.CodeInternal, command.Year);
         
-        await _propertyRepository.UpdateAsync(property, cancellationToken);
+        await _propertyRepository.SaveAsync(cancellationToken);
     }
 }

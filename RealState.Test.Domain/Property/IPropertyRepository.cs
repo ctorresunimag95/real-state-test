@@ -6,10 +6,10 @@ public interface IPropertyRepository
 
     public Task AddAsync(Property property, CancellationToken cancellationToken = default);
 
-    Task UpdateAsync(Property property, CancellationToken cancellationToken = default);
-
     Task<IReadOnlyCollection<Property>>
         GetAsync(PropertyFilters filters, CancellationToken cancellationToken = default);
+
+    Task SaveAsync(CancellationToken cancellationToken = default);
 }
 
 public record PropertyFilters(

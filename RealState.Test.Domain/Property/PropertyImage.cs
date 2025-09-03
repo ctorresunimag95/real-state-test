@@ -7,21 +7,18 @@ public class PropertyImage
     public string File { get; private set; }
     
     public bool Enabled { get; private set; }
-    
-    public Guid IdProperty { get; private set; }
 
     private PropertyImage()
     {
     }
 
-    public static PropertyImage Create(Guid idProperty, string file)
+    public static PropertyImage Create(string file)
     {
-        return new PropertyImage
-        {
-            IdPropertyImage = Guid.CreateVersion7(),
-            File = file,
-            Enabled = true,
-            IdProperty = idProperty
-        };
+        var image = new PropertyImage();
+        image.Enabled = true;
+        image.File = file;
+        image.File = file;
+        
+        return image;
     }
 }

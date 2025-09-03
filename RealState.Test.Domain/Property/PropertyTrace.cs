@@ -11,23 +11,19 @@ public class PropertyTrace
     public decimal Value { get; private set; }
     
     public decimal Tax { get; private set; }
-    
-    public Guid IdProperty { get; private set; }
 
     private PropertyTrace()
     {
     }
 
-    public static PropertyTrace Create(Guid idProperty, DateTime dateSale, string name, decimal value, decimal tax)
+    public static PropertyTrace Create(DateTime dateSale, string name, decimal value, decimal tax)
     {
-        return new PropertyTrace
-        {
-            IdPropertyTrace = Guid.CreateVersion7(),
-            DateSale = dateSale,
-            Name = name,
-            Value = value,
-            Tax = tax,
-            IdProperty = idProperty
-        };
+        var trace = new PropertyTrace();
+        trace.DateSale = dateSale;
+        trace.Name = name;
+        trace.Value = value;
+        trace.Tax = tax;
+        
+        return trace;
     }
 }

@@ -102,7 +102,7 @@ namespace RealState.Test.Infrastructure.Persistence.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<Guid>("IdProperty")
+                    b.Property<Guid?>("IdProperty")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("IdPropertyImage");
@@ -159,9 +159,7 @@ namespace RealState.Test.Infrastructure.Persistence.Migrations
                 {
                     b.HasOne("RealState.Test.Domain.Property.Property", null)
                         .WithMany("PropertyImages")
-                        .HasForeignKey("IdProperty")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdProperty");
                 });
 
             modelBuilder.Entity("RealState.Test.Domain.Property.PropertyTrace", b =>

@@ -32,7 +32,8 @@ public class AddImageHandler : IAddImageHandler
                 cancellationToken);
 
         property.AddImage(imageUrl);
-        await _propertyRepository.UpdateAsync(property, cancellationToken);
+        
+        await _propertyRepository.SaveAsync(cancellationToken);
 
         return imageUrl;
     }

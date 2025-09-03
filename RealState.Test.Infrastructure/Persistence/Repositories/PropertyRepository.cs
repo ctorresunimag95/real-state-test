@@ -25,13 +25,6 @@ public class PropertyRepository : IPropertyRepository
     public async Task AddAsync(Property property, CancellationToken cancellationToken = default)
     {
         _context.Properties.Add(property);
-        await _context.SaveChangesAsync(cancellationToken);
-    }
-    
-    public async Task UpdateAsync(Property property, CancellationToken cancellationToken = default)
-    {
-        _context.Properties.Update(property);
-        await _context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<IReadOnlyCollection<Property>> GetAsync(PropertyFilters filters
@@ -73,5 +66,10 @@ public class PropertyRepository : IPropertyRepository
             .Include(p => p.Owner )
             .Include(p => p.PropertyImages )
             .Include(p => p.PropertyTraces ).ToListAsync(cancellationToken);
+    }
+
+    public async Task SaveAsync(CancellationToken cancellationToken = default)
+    {
+        await _context.SaveChangesAsync(cancellationToken);
     }
 }

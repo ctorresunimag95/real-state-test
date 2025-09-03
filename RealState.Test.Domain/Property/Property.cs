@@ -18,9 +18,11 @@ public class Property
     
     public Owner Owner { get; }
     
-    public ICollection<PropertyImage> PropertyImages { get; } = new List<PropertyImage>();
+    private readonly List<PropertyImage> _propertyImages = new();
+    public IReadOnlyCollection<PropertyImage> PropertyImages => _propertyImages.AsReadOnly();
     
-    public ICollection<PropertyTrace> PropertyTraces { get; } = new List<PropertyTrace>();
+    private readonly List<PropertyTrace> _propertyTraces = new();
+    public IReadOnlyCollection<PropertyTrace> PropertyTraces => _propertyTraces.AsReadOnly();
 
     private Property()
     {
@@ -43,8 +45,8 @@ public class Property
     
     public void AddImage(string file)
     {
-        var image = PropertyImage.Create(IdProperty, file);
-        PropertyImages.Add(image);
+        var image = PropertyImage.Create(file);
+        _propertyImages.Add(image);
     }
 
     public void ChangePrice(decimal price)
@@ -66,7 +68,7 @@ public class Property
     
     public void AddTrace(DateTime dateSale, string name, decimal value, decimal tax)
     {
-        var trace = PropertyTrace.Create(IdProperty, dateSale, name, value, tax);
-        PropertyTraces.Add(trace);
+        var trace = PropertyTrace.Create(dateSale, name, value, tax);
+        _propertyTraces.Add(trace);
     }
 }
