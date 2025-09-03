@@ -1,0 +1,11 @@
+﻿@host = http://localhost:5184
+@idProperty=01990fa4-243b-7845-b787-850feeaf3d6e
+
+PUT {{host}}/properties/{{idProperty}}/change-price
+Accept: application/json
+X-Api-Version: 1.0
+Content-Type: application/json
+
+{
+  "price": 5700
+}

@@ -1,0 +1,4 @@
+﻿@host = http://localhost:5184
+
+GET {{host}}/properties
+X-Api-Version: 1.0

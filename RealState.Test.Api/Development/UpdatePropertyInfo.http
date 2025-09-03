@@ -1,0 +1,15 @@
+﻿@host = http://localhost:5184
+@idProperty=01990fa4-243b-7845-b787-850feeaf3d6e
+
+PUT {{host}}/properties/{{idProperty}}
+Accept: application/json
+X-Api-Version: 1.0
+Content-Type: application/json
+
+{
+  "name": "Camilo's House",
+  "address": "Stree 29",
+  "price": 48500,
+  "codeInternal": "CTC01",
+  "year": 2025
+}
