@@ -17,7 +17,7 @@ using PropertyOwnerResponse = RealState.Test.Api.Endpoints.Property.ListProperti
 
 namespace RealState.Test.Api.Endpoints.Property;
 
-internal static class PropertyEndpoints
+public static class PropertyEndpoints
 {
     public static void MapPropertyEndpoints(this IEndpointRouteBuilder app)
     {

@@ -1,5 +1,6 @@
 @host = http://localhost:5184
 
+### valid-request
 POST {{host}}/properties
 Accept: application/json
 X-Api-Version: 1.0
@@ -7,6 +8,23 @@ Content-Type: application/json
 
 {
   "name": "Camilos House",
+  "address": "Test address",
+  "price": 4500,
+  "codeInternal": "CTC01",
+  "year": 2025,
+  "idOwner": "019910D8-2A3E-7A6A-B7C7-9678C52F2305"
+}
+###
+
+
+### invalid-payload
+POST {{host}}/properties
+Accept: application/json
+X-Api-Version: 1.0
+Content-Type: application/json
+
+{
+  "name": "",
   "address": "Test address",
   "price": 4500,
   "codeInternal": "CTC01",

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using RealState.Test.Domain.Property;
 using RealState.Test.Infrastructure.Persistence.Configurations;
 
@@ -23,5 +24,11 @@ public class RealStateContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(PropertyConfiguration).Assembly);
 
         base.OnModelCreating(modelBuilder);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
+        base.OnConfiguring(optionsBuilder); 
     }
 }

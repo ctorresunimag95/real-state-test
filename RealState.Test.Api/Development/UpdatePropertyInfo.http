@@ -1,5 +1,5 @@
 ﻿@host = http://localhost:5184
-@idProperty=01990fa4-243b-7845-b787-850feeaf3d6e
+@idProperty=019910da-3fea-7939-8ac9-3220044bafff
 
 PUT {{host}}/properties/{{idProperty}}
 Accept: application/json

@@ -1,4 +1,5 @@
-﻿using RealState.Test.Domain.Property;
+﻿using FluentValidation;
+using RealState.Test.Domain.Property;
 
 namespace RealState.Test.Application.Property.AddImage;
 
@@ -11,15 +12,24 @@ public class AddImageHandler : IAddImageHandler
 {
     private readonly IImageStoreProvider _imageStoreProvider;
     private readonly IPropertyRepository _propertyRepository;
+    private readonly IValidator<AddImageCommand> _validator;
 
-    public AddImageHandler(IImageStoreProvider imageStoreProvider, IPropertyRepository propertyRepository)
+    public AddImageHandler(IImageStoreProvider imageStoreProvider, IPropertyRepository propertyRepository,
+        IValidator<AddImageCommand> validator)
     {
         _imageStoreProvider = imageStoreProvider;
         _propertyRepository = propertyRepository;
+        _validator = validator;
     }
 
     public async Task<string> HandleAsync(AddImageCommand command, CancellationToken cancellationToken = default)
     {
+        var validationResult = await _validator.ValidateAsync(command, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         var property = await _propertyRepository.GetById(command.IdProperty, cancellationToken);
 
         if (property is null)
@@ -32,7 +42,7 @@ public class AddImageHandler : IAddImageHandler
                 cancellationToken);
 
         property.AddImage(imageUrl);
-        
+
         await _propertyRepository.SaveAsync(cancellationToken);
 
         return imageUrl;
