@@ -48,3 +48,8 @@ These files contain ready-to-use HTTP requests for testing the main endpoints.
 - The solution uses .NET 9 and modern best practices.
 - All main features are covered by unit tests.
 - For more details, explore the source code and test files.
+
+## ToDos
+
+- Complete infrastructure tests for repository layer
+- Add BlobStorage using local emulator to save images
