@@ -12,6 +12,11 @@
 
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="Aspire.Hosting.SqlServer" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RealState.Test.Api\RealState.Test.Api.csproj" />
     </ItemGroup>
 
 </Project>

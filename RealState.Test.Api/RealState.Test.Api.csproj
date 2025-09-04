@@ -16,6 +16,7 @@
     <ItemGroup>
       <ProjectReference Include="..\RealState.Test.Application\RealState.Test.Application.csproj" />
       <ProjectReference Include="..\RealState.Test.Infrastructure\RealState.Test.Infrastructure.csproj" />
+      <ProjectReference Include="..\RealState.Test.ServiceDefaults\RealState.Test.ServiceDefaults.csproj" />
     </ItemGroup>
 
 </Project>

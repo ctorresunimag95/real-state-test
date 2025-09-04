@@ -18,6 +18,8 @@ builder.Services
 
 builder.Services.AddProblemDetailsHandling();
 
+builder.AddServiceDefaults();
+
 var app = builder.Build();
 
 app.CreateVersionSet();
